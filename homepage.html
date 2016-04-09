@@ -5,6 +5,9 @@
         <meta name="author" content="Group10">
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link href="css/bootstrap.css" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/d3.min.js"></script>
     </head>
     
     
@@ -16,21 +19,65 @@
             
             <!--header-->
             <div class="header">
-                <h1>NUS Academic Planner</h1> 
+                <p1>NUS Academic Planner</p1> 
             </div>
   
             <div class="content">
                 <div class="col-sm-8">
                     <h3>Timetable</h3>
                     <p>Yifei's part</p>
+                    
+                    <input type="button" value="Begin Upload" id="btnUpload" />
+                    
                 </div>
                 <div class="col-sm-4">
                     <div class="checkbars">
+                        
                         <h2>Graduation Progress</h2>
                         <h5>University Level Requirement</h5>
                         <h5>Faculty Requirement</h5>
                         <h5>Major Requirement</h5>
                         <h5>Unristrcted Electvie Modules</h5>
+                        
+                        <!--input type="button" value="Begin Upload" id="btnUpload" /-->
+                        <!--div class="clear">
+                        </div-->
+                        <progress value="0" max="100" id="progBar">
+                            <span id="downloadProgress">
+                                <!-- Your fallback goes here -->
+                            </span>
+                        </progress>
+                        <div id="progUpdate">
+                            <!-- Success Message -->
+                        </div>
+                        <Script>
+                                /* if the button is clicked*/
+                                $('#btnUpload').click(function() {
+                                    var bar = document.getElementById('progBar'),
+                                        fallback = document.getElementById('downloadProgress'),
+                                        loaded = 0;
+
+                                    var load = function() {
+                                        loaded += 1;
+                                        bar.value = loaded;
+
+                                        /* The below will be visible if the progress tag is not supported */
+                                        $(fallback).empty().append("HTML5 progress tag not supported: ");
+                                        $('#progUpdate').empty().append(loaded + "% loaded");
+
+                                            if (loaded == 100) {
+                                                clearInterval(beginLoad);
+                                                $('#progUpdate').empty().append("Upload Complete");
+                                                console.log('Load was performed.');
+                                            }
+                                    };
+
+                                    var beginLoad = setInterval(function() {
+                                        load();
+                                    }, 50);
+
+                                })
+                        </Script>
                     </div>
                     
                     <div class="infowindow">
