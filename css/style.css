@@ -57,3 +57,12 @@ p1 {
     padding-left: 20px;
     font-style: 'Poiret+One', sans-serif;
 }
+
+.NUSACP-brand {
+    color: white;
+}
+
+.input-group {
+    margin-top: 8px;
+    width: 400px;
+}
