@@ -33,103 +33,192 @@
             <div class="content">
                 <div class="col-sm-8">
                     <h3>Timetable</h3>
-                    <p>Yifei's part</p>
                     
                     <input type="text" class="timetable" name="inputtable" id="testtable">
-                    <input type="button" value="Begin Upload" id="btnUpload">
+                    <input type="button" value="Add module" id="btnAdd">  <!--used to add modules-->
+                    <input type="button" value="Begin Upload" id="btnUpload">  <!--final submit of module list-->
+                    <output type="text" class="i" id="index"></output>
                     
                 </div>
                 <div class="col-sm-4">
-                    <div class="checkbars">
+                        <div class="checkbars">
                         
                         <h2>Graduation Progress</h2>
-                        <h5>University Level Requirement</h5>
-                        
-                        <progress value="0" max="5" id="progBar_ULR">
-                            <span id="downloadProgress">
-                                <!-- Your fallback goes here -->
-                            </span>
-                        </progress>
-                        
-                        <h5>Faculty Requirement</h5>
-                        
-                        <progress value="0" max="5" id="progBar_FR">
-                            <span id="downloadProgress">
-                                <!-- Your fallback goes here -->
-                            </span>
-                        </progress>
-                        
-                        <h5>Major Requirement</h5>
-                        
-                        <progress value="0" max="5" id="progBar_MR">
-                            <span id="downloadProgress">
-                                <!-- Your fallback goes here -->
-                            </span>
-                        </progress>
-                        
-                        <h5>Unristrcted Electvie Modules</h5>
-                        
-                        <progress value="0" max="5" id="progBar_UEM">
-                            <span id="downloadProgress">
-                                <!-- Your fallback goes here -->
-                            </span>
-                        </progress>
-                        <div id="progUpdate">
-                            <!-- Success Message -->
-                        </div>
-                        
-                        
-                        
+                      
+                        <div class="progBars">    
+
+                            <h5>University Level Requirement</h5>
+                            <progress value="0" max="100" id="progBar_ULR">
+                                <span id="downloadProgress">
+                                    <!-- Your fallback goes here -->
+                                </span>
+                            </progress>
+                            <div id="progUpdate_ULR">
+                                    <!-- Success Message -->
+                            </div>
+
+                            <h5>Faculty Requirement</h5>
+                            <progress value="0" max="100" id="progBar_FR">
+                                <span id="downloadProgress">
+                                    <!-- Your fallback goes here -->
+                                </span>
+                            </progress>
+                            <div id="progUpdate_FR">
+                                    <!-- Success Message -->
+                            </div>
+
+                            <h5>Major Requirement</h5>
+                            <progress value="0" max="100" id="progBar_MR">
+                                <span id="downloadProgress">
+                                    <!-- Your fallback goes here -->
+                                </span>
+                            </progress>
+                            <div id="progUpdate_MR">
+                                    <!-- Success Message -->
+                            </div>
+                
+                            <h5>Unristrcted Electvie Modules</h5>
+                            <progress value="0" max="100" id="progBar_UEM">
+                                <span id="downloadProgress">
+                                    <!-- Your fallback goes here -->
+                                </span>
+                            </progress>
+                            <div id="progUpdate_UEM">
+                                    <!-- Success Message -->
+                            </div>
+                            
+                            
                         <!--change progress bar when button is clicked-->
                         <Script>
+                            
+                                /*use this function to create an array based on user inputs*/
+                            var ModuleArr = [1,2,2,3,1,1,1,1];
+                            var No_ULR = 0;
+                            var No_UEM = 0;
+                            var No_MR = 0;
+                            var No_FR= 0;
+
                                 /* if the button is clicked*/
                                 $('#btnUpload').click(function() {
-                                    
                                     //read modules
-                                    var ModuleNo = $("#testtable").val();
-                                    if (ModuleNo == null || ModuleNo == "") {
+                                    var i;
+                                    var progBar_Name;
+                                    var progBar_update;
+                                    var progUpdate_Name;
+                                    //var ModuleNo = $("#testtable").val();
+                                    for (i = 0; i < ModuleArr.length; i++) {
+                                        if (ModuleArr[i] == 0) {
                                         alert("Please Select a Module");
-                                        return false;
-                                    }
-                                    else if(ModuleNo != "GEK1505"){   //this part can be checked with module database
-                                        return false;
-                                    }
-                                  
-                                    progBarLoad();
-                                })
+                                            return false;
+                                        }
+                                        else if(ModuleArr[i] == 1){   //this part can be checked with module database
+                                            progBar_Name = 'progBar_ULR';
+                                            progBar_update = 20;
+                                            progUpdate_Name = 'progUpdate_ULR';
+                                            No_ULR++;
+                                        }
+                                        else if(ModuleArr[i] == 2){
+                                            progBar_Name = 'progBar_MR';
+                                            progBar_update = 20;
+                                            progUpdate_Name = 'progUpdate_MR';
+                                            No_UEM++;
+                                        }
+                                        else if(ModuleArr[i] == 3){
+                                            progBar_Name = 'progBar_FR';
+                                            progBar_update = 20;
+                                            progUpdate_Name = 'progUpdate_FR';
+                                            No_MR++;
+                                        }
+                                        else if(ModuleArr[i] == 4){
+                                            progBar_Name = 'progBar_UEM';
+                                            progBar_update = 20;
+                                            progUpdate_Name = 'progUpdate_UEM';
+                                            No_FR++;
+                                        }
+                                        else{
+                                            return false;
+                                        }
+                                    };
+                                    progBarLoad('progBar_ULR',20*No_ULR,'progUpdate_ULR'); 
+                                    progBarLoad('progBar_MR',20*No_MR,'progUpdate_MR'); 
+                                    progBarLoad('progBar_FR',20*No_FR,'progUpdate_FR'); 
+                                    progBarLoad('progBar_UEM',20*No_UEM,'progUpdate_UEM'); 
+                                });
                                 
-                                function progBarLoad(){
-                                    //start to change the progress bar
-                                    var bar = document.getElementById('progBar_UEM'),
+                              
+                                //used to update the progress bar
+                                function progBarLoad(progBar_Name,progBar_update,progUpdate_Name){
+                                    
+                                    var bar = document.getElementById(progBar_Name),
                                         fallback = document.getElementById('downloadProgress'),
                                         loaded = 0;
-
+                                    
+                                    var Endloaded = loaded + progBar_update; 
+                                    //var loaded = bar.value;
+                                    
                                     var load = function() {
-                                        loaded += 1;
+                                        loaded += progBar_update;
+                                        
                                         bar.value = loaded;
-
                                         /* The below will be visible if the progress tag is not supported */
                                         $(fallback).empty().append("HTML5 progress tag not supported: ");
-                                        $('#progUpdate').empty().append(loaded + "% loaded");
-
-                                            if (loaded == ('#progBar_UEM').val().max()) {
-                                                clearInterval(beginLoad);
-                                                $('#progUpdate').empty().append("Upload Complete");
-                                                console.log('Load was performed.');
+                                        
+                                        if(progUpdate_Name == 'progUpdate_UEM'){
+                                            if (loaded == Endloaded) {
+                                                
+                                                if(loaded != 100){
+                                                    $('#progUpdate_UEM').empty().append(loaded + "%");
+                                                }
+                                                else{
+                                                    $('#progUpdate_UEM').empty().append("Requirements Completed");
+                                                }
                                             }
+                                        }
+                                        else if(progUpdate_Name == 'progUpdate_ULR'){
+                                           
+                                            if (loaded == Endloaded) {
+                                                if(loaded != 100){
+                                                    $('#progUpdate_ULR').empty().append(loaded + "%");
+                                                }
+                                                else{
+                                                    $('#progUpdate_ULR').empty().append("Requirements Completed");
+                                                }
+                                            }
+                                        }
+                                        else if(progUpdate_Name == 'progUpdate_MR'){
+                                        
+                                            if (loaded == Endloaded) {
+                                                if(loaded != 100){
+                                                    $('#progUpdate_MR').empty().append(loaded + "%");
+                                                }
+                                                else{
+                                                    $('#progUpdate_MR').empty().append("Requirements Completed");
+                                                }
+                                            }
+                                        }
+                                        else if(progUpdate_Name == 'progUpdate_FR'){
+                                      
+                                            if (loaded == Endloaded) {
+                                                if(loaded != 100){
+                                                    $('#progUpdate_FR').empty().append(loaded + "%");
+                                                }
+                                                else{
+                                                    $('#progUpdate_FR').empty().append("Requirements Completed");
+                                                }
+                                            }
+                                        }
                                     };
-
-                                    var beginLoad = setInterval(function() {
-                                        load();
-                                    }, 50);
+                                    
+                                    load();
                                 }
                         </Script>
                     </div>
+ 
+                    <h3>   </h3>    
                     
                     <div class="infowindow">
-                    
+                    <p>   </p>
                     </div>
-                    
                 </div>
             </div>
         
@@ -137,23 +226,6 @@
             <div class="timetable">
             
             </div>
-            
-            
-<!--
-            <div id="gradpanel" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="#">About</a>
-                <a href="#">Services</a>
-                <a href="#">Clients</a>
-                <a href="#">Contact</a>
-            </div>
-            
-            <span onclick="openNav()">open</span>
--->
-            
-            
-            
-            
             
             <!-- buttom -->
             <div class="footer">

@@ -72,3 +72,87 @@ p1 {
 .col-sm-4 {
     background-color: transparent;
 }
+
+
+
+
+
+
+
+.infowindow {
+    background-color: white;
+    padding-top: 200px;
+    border: 2px solid #FF7F50;
+    height: auto;
+    width: auto;
+}
+
+.col-sm-4 {
+    table-layout: auto;
+}
+
+progress {
+    width: 200px;
+}
+
+
+
+
+
+.requirementUEM {
+    
+}
+
+.progUpdates {
+    position:absolute;
+    border:1px solid #000;
+    height:20px; 
+    width:135px;
+    left: 230px;
+    top: 85px;
+    bottom: 0px;
+}
+
+.progBars {
+    width: 210px;
+}
+
+#progUpdate_ULR {
+    position:absolute;
+   /* border:1px solid #000;*/
+    height:20px; 
+    width:135px;
+    left: 230px;
+    top: 85px;
+    bottom: 0px;
+}
+
+#progUpdate_FR {
+    position:absolute;
+   /* border:1px solid #000;*/
+    height:20px; 
+    width:135px;
+    left: 230px;
+    top: 132.5px;
+    bottom: 0px;
+}
+
+#progUpdate_MR {
+    position:absolute;
+    /*border:1px solid #000;*/
+    height:20px; 
+    width:135px;
+    left: 230px;
+    top: 180.5px;
+    bottom: 0px;
+}
+
+#progUpdate_UEM {
+    position:absolute;
+    /*border:1px solid #000;*/
+    height:20px; 
+    width:135px;
+    left: 230px;
+    top: 230px;
+    bottom: 0px;
+}
