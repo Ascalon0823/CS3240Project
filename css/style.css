@@ -4,33 +4,40 @@
     padding:10 0 0 60px;
 }
 
-#gradpanel {
+/*
+.gradpanel {
     position:absolute;
-    border:1px solid #000; 
+    /*border:1px solid #000;*/ 
     height:500px; 
     width:190px;
     left: 970px;
     top: 115px;
     bottom: 50px;
 }
+*/
 
-#header {
-    border:1px solid #000; 
+.header {
+    /*border:1px solid #000;*/ 
     width:1145px; 
     height:100px; 
     margin:0 0 5px 0;
 }
 
-#content {
-    border:1px solid #000; 
-    width:950px; 
+.content {
+    /*border:1px solid #000;*/ 
+    /*width:950px;*/
+    width:1145px;
     height:500px;
     margin:5px 0 5px 0;
 }
 
-#footer {
+.footer {
     border:1px solid #000; 
     width:1145px; 
     height:40px;
     margin:5px 0 0 0;
+}
+
+.checkbars {
+    top:50px;
 }
