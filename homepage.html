@@ -40,14 +40,35 @@
                     <output type="text" class="i" id="index"></output>
                     
                 </div>
+<!----------------------------------------------------Graduation Check Panels------------------------------------>                 
+<!----------------------------------------------------Graduation Check Panels------------------------------------>  
+<!----------------------------------------------------Graduation Check Panels------------------------------------>  
                 <div class="col-sm-4">
                         <div class="checkbars">
                         
                         <h2>Graduation Progress</h2>
                       
                         <div class="progBars">    
-
-                            <h5>University Level Requirement<img src="img/circlequestionmark.png" height="15" width="15" align="right" id="ULR_q"></h5>
+                                
+                            <div id="ULRbar">University Level Requirement<div id="ULR_q"><img src="img/circlequestionmark.png" height="15" width="15" align="right">
+                                <span id="popupULR">
+                                    <p class="progtips">Students are required to read 20 MCs of the ULR consisting of:</p>
+                                    <p class="progtips">(1): 2 x *GEM modules (8 MCs)</p>
+                                    <p class="progtips">(2): 1 SS Module(4 MCs)</p>
+                                    <p class="progtips">(3): 2 ** ULR Breadth outside student’s Faculty (8 MCs)</p>
+                                </span>
+                                <script>
+                                    var tips = document.getElementById('popupULR');
+                                    
+                                    window.onmousemove = function(d){
+                                        var x = d.clientX,
+                                            y = d.clientY;
+                                        tips.style.top = (y+20) + 'px';
+                                        tips.style.left = (x+20) +'px';
+                                    }
+                                </script>
+                                </div>
+                            </div>
                             
                             <progress value="0" max="100" id="progBar_ULR">
                                 <span id="downloadProgress">
@@ -92,19 +113,15 @@
                         <!--change progress bar when button is clicked-->
                         <Script>
                             
+                           
+                            
                                 /*use this function to create an array based on user inputs*/
                             var ModuleArr = [1,2,2,3,1,1,1,1];
                             var No_ULR = 0, No_UEM = 0, No_MR = 0, No_FR= 0;
-
-                            //if quesiton mark is clicked
-                            $('#ULR_q').click(function() {
-                                alert("aaa");
-                            };
-                            
                             
                                 /* if the button is clicked*/
                                 $('#btnUpload').click(function() {
-                                    //read modules
+                                //read modules
                                     var i;
                                     var progBar_Name;
                                     var progBar_update;
@@ -220,16 +237,21 @@
  
                     <h3>   </h3>    
                     
-                    <div class="infowindow">
-                    <p>   </p>
+                    <div class="infowindow" id="info">
+                        <script>
+                            var ModuleTaken = ["EE1001","EE1002","CS1010","EE1003","CS1020","CS3240"];
+                            $('#info').append("<ul></ul>");
+                            for(var i in ModuleTaken){
+                                var li = "<li>";
+                                $("ul").append(li.concat(ModuleTaken[i]));
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
-        
-            <!--graduation check panel-->
-            <div class="timetable">
-            
-            </div>
+<!----------------------------------------------------Graduation Check Panels------------------------------------>                 
+<!----------------------------------------------------Graduation Check Panels------------------------------------>  
+<!----------------------------------------------------Graduation Check Panels------------------------------------> 
             
             <!-- buttom -->
             <div class="footer">
