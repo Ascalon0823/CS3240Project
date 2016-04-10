@@ -47,7 +47,8 @@
                       
                         <div class="progBars">    
 
-                            <h5>University Level Requirement</h5>
+                            <h5>University Level Requirement<img src="img/circlequestionmark.png" height="15" width="15" align="right" id="ULR_q"></h5>
+                            
                             <progress value="0" max="100" id="progBar_ULR">
                                 <span id="downloadProgress">
                                     <!-- Your fallback goes here -->
@@ -57,7 +58,7 @@
                                     <!-- Success Message -->
                             </div>
 
-                            <h5>Faculty Requirement</h5>
+                            <h5>Faculty Requirement<img src="img/circlequestionmark.png" height="15" width="15" align="right" id="FR_q"></h5>
                             <progress value="0" max="100" id="progBar_FR">
                                 <span id="downloadProgress">
                                     <!-- Your fallback goes here -->
@@ -67,7 +68,7 @@
                                     <!-- Success Message -->
                             </div>
 
-                            <h5>Major Requirement</h5>
+                            <h5>Major Requirement<img src="img/circlequestionmark.png" height="15" width="15" align="right" id="MR_q"></h5>
                             <progress value="0" max="100" id="progBar_MR">
                                 <span id="downloadProgress">
                                     <!-- Your fallback goes here -->
@@ -77,7 +78,7 @@
                                     <!-- Success Message -->
                             </div>
                 
-                            <h5>Unristrcted Electvie Modules</h5>
+                            <h5>Unristrcted Electvie Modules<img src="img/circlequestionmark.png" height="15" width="15" align="right" id="UEM_q"></h5>
                             <progress value="0" max="100" id="progBar_UEM">
                                 <span id="downloadProgress">
                                     <!-- Your fallback goes here -->
@@ -93,11 +94,14 @@
                             
                                 /*use this function to create an array based on user inputs*/
                             var ModuleArr = [1,2,2,3,1,1,1,1];
-                            var No_ULR = 0;
-                            var No_UEM = 0;
-                            var No_MR = 0;
-                            var No_FR= 0;
+                            var No_ULR = 0, No_UEM = 0, No_MR = 0, No_FR= 0;
 
+                            //if quesiton mark is clicked
+                            $('#ULR_q').click(function() {
+                                alert("aaa");
+                            };
+                            
+                            
                                 /* if the button is clicked*/
                                 $('#btnUpload').click(function() {
                                     //read modules
