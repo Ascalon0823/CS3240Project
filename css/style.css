@@ -222,3 +222,17 @@ progress {
     border-color: white;
     
 }
+
+
+.infowindow button{
+    height:32px;
+    width: 336px;
+    margin-left: 0px;
+    margin-bottom: 2px;
+    text-align: left;
+    color: white;
+    display: block;
+    border: none;
+    
+    
+}

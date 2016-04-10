@@ -138,9 +138,75 @@
                             
                             
                         <!--change progress bar when button is clicked-->
-                        <Script>
-                            
-                           
+                       
+                    </div>
+ 
+                    <h3>   </h3>    
+                    
+                    <div class="infowindow" id="info">
+                    </div>
+                </div>
+            </div>
+<!----------------------------------------------------Graduation Check Panels------------------------------------>                 
+<!----------------------------------------------------Graduation Check Panels------------------------------------>  
+<!----------------------------------------------------Graduation Check Panels------------------------------------> 
+            
+            <!-- buttom -->
+            <div class="footer">
+                <div class="col-sm-4">
+                    <h3>Contace Us</h3>
+                    <p>If you have any feedback or questions, please contact us</p>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Members:</h3>
+                    <p>Hu Yifei</p>
+                    <p>Wu Shiming</p>
+                    <p>Koh Han Yan</p>
+                    <p>Manish</p>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Column 3</h3>        
+                    <p>....</p>
+                    <p>....</p>
+                </div>
+            </div>
+        
+        
+        </div>
+
+        
+        
+         <Script>
+             var userModules =[
+                       {"id":"CS1010","type":"F","passed":true,"pre":[]},
+                       {"id":"CS1020","type":"F","passed":true,"pre":["CS1010"]},
+                       {"id":"CS1231","type":"F","passed":true},
+                       {"id":"LAJ1201","type":"U","passed":true},
+                       {"id":"CS2103","type":"F","passed":true},
+                       {"id":"MA1101R","type":"F","passed":true},
+                       {"id":"GEK1505","type":"L","passed":true},
+                       {"id":"SSA2205","type":"L","passed":true},
+                       {"id":"CS3242","type":"M","passed":false}
+                 ]; 
+             var requireModules =[
+                       {"id":"CS1010","type":"F"},
+                       {"id":"CS1020","type":"F"},
+                       {"id":"CS1231","type":"F"},
+                       {"id":"CS2010","type":"F"},
+                       {"id":"CS2100","type":"F"},
+                       {"id":"CS2101","type":"F"},
+                       {"id":"CS2102","type":"F"},
+                       {"id":"CS2103T","type":"F"},
+                       {"id":"CS2105","type":"F"},
+                       {"id":"CS3240","type":"F"},
+                       {"id":"CS3241","type":"F"},
+                       {"id":"IS1103","type":"F"},
+                       {"id":"MA1101R","type":"F"},
+                       {"id":"MA1521","type":"F"},
+                       {"id":"MA1301","type":"F"},
+                       {"id":"SS","type":"L"},
+                       {"id":"ST2334","type":"F"}
+                 ];  
                             
                                 /*use this function to create an array based on user inputs*/
                             var ModuleArr = [1,2,2,3,1,1,1,1];
@@ -259,53 +325,35 @@
                                     
                                     load();
                                 }
-                        </Script>
-                    </div>
- 
-                    <h3>   </h3>    
-                    
-                    <div class="infowindow" id="info">
-                        <script>
-                            var ModuleTaken = ["EE1001","EE1002","CS1010","EE1003","CS1020","CS3240"];
-                            $('#info').append("<ul></ul>");
-                            for(var i in ModuleTaken){
-                                var li = "<li>";
-                                $("ul").append(li.concat(ModuleTaken[i]));
+                            for(var i in userModules){
+                                var button = document.createElement('button');
+                                var id = document.createTextNode(userModules[i].id);
+                                var state = "PASS";
+                                if(!userModules[i].passed){
+                                    state="AVAILABLE"
+                                }
+                                var stateE = document.createTextNode(state);
+                                var stateDiv = document.createElement('div');
+                                stateDiv.style.cssFloat="right";
+                                button.appendChild(id);
+                                stateDiv.appendChild(stateE);
+                                button.appendChild(stateDiv);
+                                var self=document.getElementById('info');
+                                if(userModules[i].type=="F"){
+                                    button.style.backgroundColor= "#B4FFA3";
+                                }else if(userModules[i].type=="M"){
+                                    button.style.backgroundColor= "#00F3FF";
+                                }
+                                else if(userModules[i].type=="U"){
+                                    button.style.backgroundColor= "#F5ACEE";
+                                }
+                                else if(userModules[i].type=="L"){
+                                    button.style.backgroundColor= "#FEFF80";
+                                }
+                                self.appendChild(button);
                             }
-                        </script>
-                    </div>
-                </div>
-            </div>
-<!----------------------------------------------------Graduation Check Panels------------------------------------>                 
-<!----------------------------------------------------Graduation Check Panels------------------------------------>  
-<!----------------------------------------------------Graduation Check Panels------------------------------------> 
-            
-            <!-- buttom -->
-            <div class="footer">
-                <div class="col-sm-4">
-                    <h3>Contace Us</h3>
-                    <p>If you have any feedback or questions, please contact us</p>
-                </div>
-                <div class="col-sm-4">
-                    <h3>Members:</h3>
-                    <p>Hu Yifei</p>
-                    <p>Wu Shiming</p>
-                    <p>Koh Han Yan</p>
-                    <p>Manish</p>
-                </div>
-                <div class="col-sm-4">
-                    <h3>Column 3</h3>        
-                    <p>....</p>
-                    <p>....</p>
-                </div>
-            </div>
-        
-        
-        </div>
-
-        
-        
-        
+             
+                        </Script>
         
         
         
