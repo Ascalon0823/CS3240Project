@@ -23,10 +23,17 @@
                 <div class="navbar-brand">
                     <div class = "NUSACP-brand">NUS Academic Planner</div>
                 </div>
-                <form class="navbar-form" role="search">
+                
+                <!-------------------------------------------------search bar-------------------------------------------------->
+                
+                <form class="navbar-form" role="search" autocomplete="off">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search / Module Code" name="srch-term" id="srch-term">
+                    <div class="results" id="results">
+                        <li><a id="match"></a></li>
+                    </div>
                 </div>
+                    
                 <div class = "profile"><button class = "user">U</button></div>
             </div>
   
@@ -39,24 +46,24 @@
                         <table class = "table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Days</th><th>0800</th><th>1000</th><th>1200</th><th>1400</th><th>1600</th><th>1800</th><th>2000</th>
+                                    <th>Days</th><th>0800</th><th>0900</th><th>1000</th><th>1100</th><th>1200</th><th>1300</th><th>1400</th><th>1500</th><th>1600</th><th>1700</th><th>1800</th><th>1900</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th>Mon</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                                    <th>Mon</th><th><div class="ModuleSlot" id="ModuleSlot1"></div></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
                                 </tr>
                                 <tr>
-                                    <th>Tue</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                                    <th>Tue</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
                                 </tr>
                                 <tr>
-                                    <th>Wed</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                                    <th>Wed</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
                                 </tr>
                                 <tr>
-                                    <th>Thu</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                                    <th>Thu</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
                                 </tr>
                                 <tr>
-                                    <th>Fri</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                                    <th>Fri</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
                                 </tr>
                             </tbody>
                         </table>
@@ -79,7 +86,7 @@
                             
                             <!------------------------------------ ULR requirement progress------------------------------------------>
                             <!------------------------------------ ULR requirement progress------------------------------------------>
-                            <div id="ULRbar">University Level Requirement<div id="ULR_q"><img src="img/circlequestionmark.png" height="15" width="15" align="right">
+                            <div id="ULRbar">University Level Requirement<div class="imgs"><div id="ULR_q"><img src="img/circlequestionmark.png" height="15" width="15" align="right">
                                 <span id="popupULR">
                                     <p class="progtips_hl">Students are required to read 20 MCs of the ULR consisting of:</p>
                                     <p class="progtips">(1): 2 x *GEM modules (8 MCs)</p>
@@ -87,6 +94,8 @@
                                     <p class="progtips">(3): 2 ** ULR Breadth outside student’s Faculty (8 MCs)</p>
                                 </span>
                                 </div>
+                                <button class="ULR_eq" id="ULR_eq"><img src="img/excalmatorymark.png" height="15" width="15" align="right" id="ULR_eq"></button>
+                            </div>
                             </div>
                             <progress value="0" max="100" id="progBar_ULR">
                                 <span id="downloadProgress"><!-- Your fallback goes here --></span>
@@ -95,7 +104,7 @@
 
                             <!--------------------------------------- PR requirement progress------------------------------------------>
                             <!--------------------------------------- PR requirement progress------------------------------------------>
-                            <div id="PRbar">Programme Requirement<div id="PR_q"><img src="img/circlequestionmark.png" height="15" width="15" align="right" id="PR_q">
+                            <div id="PRbar">Programme Requirement<div class="imgs"><div id="PR_q"><img src="img/circlequestionmark.png" height="15" width="15" align="right" id="PR_q">
                                 <span id="popupPR">
                                     <p class="progtips_hl">Students are required to read 120 MCs of the PR consisting of:</p>
                                     <p class="progtips">(1): Computer Science Foundation (36 MCs)</p>
@@ -105,6 +114,8 @@
                                     <p class="progtips">(5): Mathematics and Sciences (24 MCs)</p>
                                 </span>
                                 </div>
+                                <button class="PR_eq" id="PR_eq"><img src="img/excalmatorymark.png" height="15" width="15" align="right" id="PR_eq"></button>
+                            </div>
                             </div>
                             <progress value="0" max="100" id="progBar_PR">
                                 <span id="downloadProgress"><!-- Your fallback goes here --></span>
@@ -113,7 +124,7 @@
 
                             <!--------------------------------------- UEM requirement progress------------------------------------------>
                             <!--------------------------------------- UEM requirement progress------------------------------------------>
-                            <div id="UEMbar">Unrestricted Elective Modules<div id="UEM_q"><img src="img/circlequestionmark.png" height="15" width="15" align="right" id="UEM_q">
+                            <div id="UEMbar">Unrestricted Elective Modules<div class="imgs"><div id="UEM_q"><img src="img/circlequestionmark.png" height="15" width="15" align="right" id="UEM_q">
                                 <span id="popupUEM">
                                     <p class="progtips_hl">Students are required to read 20 MCs of the UEM can be selected from:</p>
                                     <p class="progtips">(1): Enhancement Programmes</p>
@@ -123,8 +134,11 @@
                                     <p class="progtips">(5): NUS Overseas Colleges (NOC)</p>
                                 </span>
                                 </div>
+                                <button class="UEM_eq" id="UEM_eq"><img src="img/excalmatorymark.png" height="15" width="15" align="right" id="UEM_eq"></button>
+                            </div>
                             </div>
                             <progress value="0" max="100" id="progBar_UEM">
+                                <div> </div>
                                 <span id="downloadProgress"><!-- Your fallback goes here --></span>
                             </progress>
                             <div id="progUpdate_UEM"><!-- Success Message --></div>
@@ -132,13 +146,21 @@
                         <!--change progress bar when button is clicked-->
                        
                     </div>
+                            
+                    <div>
+                    <input type="button" value="See Module List" id="MLUpload">
                     <h2>Module List</h2>
+                    </div>
+                            
                     <div class="infowindow" id="info">
+                        <div class="ModuleListAll" id="ModuleListAll"></div>
+                        <div class="ModuleListP" id="ModuleListP"></div>
+                        <div class="ModuleListU" id="ModuleListU"></div>
+                        <div class="ModuleListL" id="ModuleListL" style="display: none"></div>
                     </div>
                 </div>
             </div>
 <!----------------------------------------------------Graduation Check Panels Ends------------------------------------>                 
-
         
         </div>
         
@@ -153,37 +175,40 @@
                        {"id":"CS1020","type":"P","passed":true,"pre":["CS1010"]},
                        {"id":"CS1231","type":"P","passed":true},
                        {"id":"LAJ1201","type":"U","passed":true},
-                       {"id":"CS2103","type":"P","passed":true},
+                       {"id":"CS2103","type":"P","passed":false},
                        {"id":"MA1101R","type":"P","passed":true},
                        {"id":"GEK1505","type":"L","passed":true},
                        {"id":"SSA2205","type":"L","passed":true},
                        {"id":"CS3242","type":"P","passed":false}
                  ]; 
              var requireModules =[
-                       {"id":"CS1010","type":"P"},
-                       {"id":"CS1020","type":"P"},
-                       {"id":"CS1231","type":"P"},
-                       {"id":"CS2010","type":"P"},
-                       {"id":"CS2100","type":"P"},
-                       {"id":"CS2101","type":"P"},
-                       {"id":"CS2102","type":"P"},
-                       {"id":"CS2103T","type":"P"},
-                       {"id":"CS2105","type":"P"},
-                       {"id":"CS3240","type":"P"},
-                       {"id":"CS3241","type":"P"},
-                       {"id":"IS1103","type":"P"},
-                       {"id":"MA1101R","type":"P"},
-                       {"id":"MA1521","type":"P"},
-                       {"id":"MA1301","type":"P"},
-                       {"id":"SS","type":"L"},
-                       {"id":"ST2334","type":"P"}
+                       {"id":"CS1010","type":"P","name":"Programming Methodology"},
+                       {"id":"CS1020","type":"P","name":"Data Structures and Algorithms I"},
+                       {"id":"CS1231","type":"P","name":"Discrete Structures"},
+                       {"id":"CS2010","type":"P","name":"Data Structures andAlgorithms II"},
+                       {"id":"CS2100","type":"P","name":"Computer Organisation"},
+                       {"id":"CS2101","type":"P","name":"Effective Communication for Computing Professionals"},
+                       {"id":"CS2102","type":"P","name":"???"},
+                       {"id":"CS2103T","type":"P","name":"Software Engineering"},
+                       {"id":"CS2105","type":"P","name":"Software Engineering"},
+                       {"id":"CS3240","type":"P","name":"Software Engineering"},
+                       {"id":"CS3241","type":"P","name":"Software Engineering"},
+                       {"id":"IS1103","type":"P","name":"Software Engineering"},
+                       {"id":"MA1101R","type":"P","name":"Software Engineering"},
+                       {"id":"MA1521","type":"P","name":"Software Engineering"},
+                       {"id":"MA1301","type":"P","name":"Software Engineering"},
+                       {"id":"SS","type":"L","name":"Software Engineering"},
+                       {"id":"ST2334","type":"P","name":"Software Engineering"}
                  ];  
                             
                 findMType(userModules);
+                seeModuleList(userModules);
 
+/******************************************************Progress Bar Percentage********************************************/
+/******************************************************Progress Bar Percentage*****************************************/
                 function findMType(userModules){
                 var ModuleNo = userModules.length;  //number of module depends on users' modules
-                var No_ULR = 0, No_UEM = 0, No_PR = 0;
+                var No_ULR = 0, No_UEM = 0, No_PR = 0, future_ULR = 0, future_UEM = 0, future_PR = 0;
                 var i = 0;
                 for (i = 0; i < ModuleNo; i++) {
                     if (userModules[i].type == "P") {
@@ -209,8 +234,8 @@
                     progBarLoad('progBar_PR',(3/10)*No_PR,'progUpdate_PR'); 
                     progBarLoad('progBar_UEM',20*No_UEM,'progUpdate_UEM'); 
                 }
-                                          
-                //used to update the progress bar
+             
+/*******************************************used to update the progress bar********************************************/           /*******************************************used to update the progress bar********************************************/           
                 function progBarLoad(progBar_Name,progBar_update,progUpdate_Name){
 
                     var bar = document.getElementById(progBar_Name),
@@ -218,14 +243,15 @@
                         loaded = 0;
 
                     var Endloaded = loaded + progBar_update; //show how many modules have been read in pass state
-
+                    
                     var load = function() {
                         loaded += progBar_update;
                         bar.value = loaded;
+                        
                         if(progUpdate_Name == 'progUpdate_UEM'){
-                            if (loaded == Endloaded) {
+                            if(loaded == Endloaded){    
                                 if(loaded != 100){
-                                    $('#progUpdate_UEM').empty().append(loaded + "% Completion");
+                                    $('#progUpdate_UEM').empty().append(loaded + "% Completion" + "\n" + progBar_update/20*4 + "/20 MC");
                                 }
                                 else{
                                     $('#progUpdate_UEM').empty().append("Requirements Completed");
@@ -235,7 +261,7 @@
                         else if(progUpdate_Name == 'progUpdate_ULR'){
                             if (loaded == Endloaded) {
                                 if(loaded != 100){
-                                    $('#progUpdate_ULR').empty().append(loaded + "% Completion");
+                                    $('#progUpdate_ULR').empty().append(loaded + "% Completion" + "\n" + progBar_update/20*4 + "/20 MC");
                                 }
                                 else{
                                     $('#progUpdate_ULR').empty().append("Requirements Completed");
@@ -246,7 +272,7 @@
 
                             if (loaded == Endloaded) {
                                 if(loaded != 100){
-                                    $('#progUpdate_PR').empty().append(loaded + "% Completion");
+                                    $('#progUpdate_PR').empty().append(loaded + "% Completion" + "\n" + progBar_update/(3/10)*4 + "/120 MC");
                                 }
                                 else{
                                     $('#progUpdate_PR').empty().append("Requirements Completed");
@@ -257,37 +283,206 @@
                     load();
                 }
              
-                            for(var i in userModules){
-                                var button = document.createElement('button');
-                                var id = document.createTextNode(userModules[i].id);
-                                var state = "PASS";
-                                if(!userModules[i].passed){
-                                    state="AVAILABLE"
-                                }
-                                var stateE = document.createTextNode(state);
-                                var stateDiv = document.createElement('div');
-                                stateDiv.style.cssFloat="right";
-                                button.appendChild(id);
-                                stateDiv.appendChild(stateE);
-                                button.appendChild(stateDiv);
-                                var self=document.getElementById('info');
-                                if(userModules[i].type=="P"){
-                                    button.style.backgroundColor= "#B4FFA3";
-                                }else if(userModules[i].type=="M"){
-                                    button.style.backgroundColor= "#00F3FF";
-                                }
-                                else if(userModules[i].type=="U"){
-                                    button.style.backgroundColor= "#F5ACEE";
-                                }
-                                else if(userModules[i].type=="L"){
-                                    button.style.backgroundColor= "#FEFF80";
-                                }
-                                self.appendChild(button);
+/*******************************************Sort module and add to list********************************************/           /*******************************************Sort module and add to list********************************************/
+                function seeModuleList(userModules){
+                    
+                    var ModuleListAll = document.getElementById('ModuleListAll');
+                    var ModuleListP = document.getElementById('ModuleListP');
+                    var ModuleListU = document.getElementById('ModuleListU');
+                    var ModuleListL = document.getElementById('ModuleListL');
+                    var i,NoPass = 0;
+                    
+                    //sort the userModules at beginning
+                    for(i = 0; i < userModules.length; i++){
+                        if(!userModules[i].passed){
+                            var tempid;
+                            tempid = userModules[i].id;
+                            userModules[i].id = userModules[NoPass].id;
+                            userModules[NoPass].id = tempid;
+                            var temppassed;
+                            temppassed = userModules[i].passed;
+                            userModules[i].passed = userModules[NoPass].passed;
+                            userModules[NoPass].passed = temppassed;
+                            var temptype;
+                            temptype = userModules[i].type;
+                            userModules[i].type = userModules[NoPass].type;
+                            userModules[NoPass].type = temptype;
+                            NoPass++;
+                        }
+                    }
+                    
+                    //create a specific list for modules
+                    for(i = 0; i < userModules.length; i++ ){
+                        var button = document.createElement('button');
+                        var id = document.createTextNode(userModules[i].id);
+                        var state = "PASS";
+                        if(!userModules[i].passed){
+                            state="AVAILABLE"
+                        }
+                        var stateE = document.createTextNode(state);
+                        var stateDiv = document.createElement('div');
+                        stateDiv.style.cssFloat="right";
+                        button.appendChild(id);
+                        stateDiv.appendChild(stateE);
+                        button.appendChild(stateDiv);
+                        var self=document.getElementById('info');
+                        if(userModules[i].type=="P"){
+                            if(state == "PASS"){
+                                button.style.backgroundColor= "#01DF01";
                             }
+                            else{
+                                button.style.backgroundColor= "#B4FFA3";
+                            }
+                            ModuleListP.appendChild(button);
+                        }
+                        else if(userModules[i].type=="U"){
+                            if(state == "PASS"){
+                                button.style.backgroundColor= "#2E9AFE";
+                            }
+                            else{
+                                button.style.backgroundColor= "#81F7F3";
+                            }
+                            ModuleListU.appendChild(button);
+                        }
+                        else if(userModules[i].type=="L"){
+                            if(state == "PASS"){
+                                button.style.backgroundColor= "#FFBF00";
+                            }
+                            else{
+                                button.style.backgroundColor= "#F3F781";
+                            }
+                            ModuleListL.appendChild(button);
+                        }
+                    }
+                    
+                    //create total module list
+                    for(i = 0; i < userModules.length; i++ ){
+                        var button = document.createElement('button');
+                        var id = document.createTextNode(userModules[i].id);
+                        var state = "PASS";
+                        if(!userModules[i].passed){
+                            state="AVAILABLE"
+                        }
+                        var stateE = document.createTextNode(state);
+                        var stateDiv = document.createElement('div');
+                        stateDiv.style.cssFloat="right";
+                        button.appendChild(id);
+                        stateDiv.appendChild(stateE);
+                        button.appendChild(stateDiv);
+                        var self=document.getElementById('info');
+                        if(userModules[i].type=="P"){
+                            if(state == "PASS"){
+                                button.style.backgroundColor= "#01DF01";
+                            }
+                            else{
+                                button.style.backgroundColor= "#B4FFA3";
+                            }
+                        }
+                        else if(userModules[i].type=="U"){
+                            if(state == "PASS"){
+                                button.style.backgroundColor= "#2E9AFE";
+                            }
+                            else{
+                                button.style.backgroundColor= "#81F7F3";
+                            }
+                        }
+                        else if(userModules[i].type=="L"){
+                            if(state == "PASS"){
+                                button.style.backgroundColor= "#FFBF00";
+                            }
+                            else{
+                                button.style.backgroundColor= "#F3F781";
+                            }
+                        }
+                        ModuleListAll.appendChild(button);
+                    }
+                    
+                }
              
-                        </Script>
-        
-        
+/*******************************************Show different List********************************************/           /*******************************************Show different List********************************************/             
+                $("#ULR_eq").click(function(){
+                    $("#ModuleListAll").css("display","none");
+                    $("#ModuleListU").css("display","none");
+                    $("#ModuleListP").css("display","none");
+                    $("#ModuleListL").css("display","block");
+                    return false;
+                });
+             
+                $("#UEM_eq").click(function(){
+                    $("#ModuleListAll").css("display","none");
+                    $("#ModuleListU").css("display","block");
+                    $("#ModuleListP").css("display","none");
+                    $("#ModuleListL").css("display","none");
+                    return false;
+                });
+             
+                $("#PR_eq").click(function(){
+                    $("#ModuleListAll").css("display","none");
+                    $("#ModuleListU").css("display","none");
+                    $("#ModuleListP").css("display","block");
+                    $("#ModuleListL").css("display","none");
+                    return false;
+                });
+             
+                $("#MLUpload").click(function(){
+                    $("#ModuleListAll").css("display","block");
+                    $("#ModuleListU").css("display","none");
+                    $("#ModuleListP").css("display","none");
+                    $("#ModuleListL").css("display","none");
+                    return false;
+                });
+
+             
+/*******************************************Search Bar Showing********************************************/           /*******************************************Search Bar Showing********************************************/ 
+                var i;
+                $('#srch-term').on('input',function(){
+                    var InputModule;
+                    var x = document.getElementById("srch-term").value;
+                        $('#results').css("display","block");
+                        $('#match').empty().append(x);
+                    if(x.length >= 8){
+                        $('#match').empty().append("Error!");
+                    }
+                    else if(x.length >= 6){
+                        InputModule = x;
+                        matchModule(InputModule);
+                    }
+                });
+             
+                function matchModule(InputModule){
+                    for(i = 0; i < requireModules.length;i++){
+                        if(InputModule == requireModules[i].id){
+                            $('#match').empty().append(InputModule + " " + requireModules[i].name);
+                            findinTable(InputModule);
+                            return false;
+                        }
+                    }
+                }
+             
+                function fillinTable(InputModule){
+                    $('#match').click(function(InputModule){
+                        var TimeSlot = document.getElementById('ModuleSlot1');
+                        var FindClash = TimeSlot.childNodes.length;
+                        if(FindClash > 1){
+                            alert("clash!");
+                            return false;
+                        }
+                        else{
+                            var Slot = document.createElement('button');
+                            TimeSlot.appendChild(Slot);   
+                        }
+                    });
+                }
+    
+                $(document).click(function(e) {
+                    var target = e.target;
+
+                    if (!$(target).is('#srch-term') && !$(target).parents().is('#srch-term')) {
+                        $('#results').hide();
+                    }
+                });
+             
+            </Script>        
         
     </body>
 </html>
