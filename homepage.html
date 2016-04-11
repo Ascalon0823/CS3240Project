@@ -30,7 +30,6 @@
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search / Module Code" name="srch-term" id="srch-term">
                     <div class="results" id="results">
-                        <li><a id="match"></a></li>
                     </div>
                 </div>
                     
@@ -195,11 +194,14 @@
                        {"id":"CS3241","type":"P","name":"Software Engineering"},
                        {"id":"IS1103","type":"P","name":"Software Engineering"},
                        {"id":"MA1101R","type":"P","name":"Software Engineering"},
+                       {"id":"CS3242","type":"P","name":"Software Engineering"},
                        {"id":"MA1521","type":"P","name":"Software Engineering"},
                        {"id":"MA1301","type":"P","name":"Software Engineering"},
                        {"id":"SS","type":"L","name":"Software Engineering"},
                        {"id":"ST2334","type":"P","name":"Software Engineering"}
                  ];  
+             var tableModules =[
+                 ]; 
                             
                 findMType(userModules);
                 seeModuleList(userModules);
@@ -439,28 +441,97 @@
                     var InputModule;
                     var x = document.getElementById("srch-term").value;
                         $('#results').css("display","block");
-                        $('#match').empty().append(x);
-                    if(x.length >= 8){
-                        $('#match').empty().append("Error!");
-                    }
-                    else if(x.length >= 6){
+                    var self = document.getElementById('results');
+                            self.innerHTML="";
+                    if(x.length >= 1){
                         InputModule = x;
-                        matchModule(InputModule);
+                        var results = matchModule(InputModule);
+                        if(results.length==0){
+                            var id = document.createTextNode("No Match");
+                            self.appendChild(id);
+                        }
+                        else{
+                            for(var i = 0;i<results.length;i++){
+                                var button = document.createElement('button');
+                                button.setAttribute('id','module_select');
+                                var id = document.createTextNode(results[i].id);
+                                button.appendChild(id);
+                                var state = "AVAILABLE";
+                                var userModule;
+                                for(k=0;k<userModules.length;k++){
+                                    if(userModules[k].id==results[i].id&&userModules[k].passed){
+                                        state="PASS";
+                                    }
+                                }
+                                var stateE = document.createTextNode(state);
+                                var stateDiv = document.createElement('div');
+                                stateDiv.style.cssFloat="right";
+                                stateDiv.appendChild(stateE);
+                                button.appendChild(stateDiv);
+                                if(results[i].type=="P"){
+                                    if(state == "PASS"){
+                                        button.style.backgroundColor= "#01DF01";
+                                    }
+                                    else{
+                                        button.style.backgroundColor= "#B4FFA3";
+                                    }
+                                }
+                                else if(results[i].type=="U"){
+                                    if(state == "PASS"){
+                                        button.style.backgroundColor= "#2E9AFE";
+                                    }
+                                    else{
+                                        button.style.backgroundColor= "#81F7F3";
+                                    }
+                                }
+                                else if(results[i].type=="L"){
+                                    if(state == "PASS"){
+                                        button.style.backgroundColor= "#FFBF00";
+                                    }
+                                    else{
+                                        button.style.backgroundColor= "#F3F781";
+                                    }
+                                }
+                                self.appendChild(button);
+                            }
+                            $('.results').on('click','button',function(e){
+                                var index = $(this).closest("button").index();
+                                var TimeSlot = document.getElementById('ModuleSlot1');
+                                var FindClash = TimeSlot.childNodes.length;
+                                if(FindClash >= 1){
+                                    alert("clash!");
+                                }
+                                else{
+                                    var Slot = document.createElement("p");
+                                    TimeSlot.appendChild(Slot);
+                                    $('#ModuleSlot1').css("font-size",8+'px');
+                                    $('#ModuleSlot1').css("background-color","aliceblue");
+                                    
+                                    $('#ModuleSlot1').append(results[index].id);
+                                }
+                                return false;
+                            });
+                        }
                     }
                 });
              
                 function matchModule(InputModule){
+                    var searchResult = [];
+                    var input = InputModule.toLowerCase();
                     for(i = 0; i < requireModules.length;i++){
-                        if(InputModule == requireModules[i].id){
-                            $('#match').empty().append(InputModule + " " + requireModules[i].name);
-                            fillinTable(InputModule);
+                        var match = requireModules[i].id.toLowerCase();
+                        if(match.indexOf(input)>=0){
+                            searchResult.push(requireModules[i]);
                         }
                     }
+                    return searchResult;
                 }
+                
              
-                function fillinTable(InputModule){
+                /*function fillinTable(InputModule){
                     var Input = InputModule;
-                    $('#match').click(function(){
+                    $('#module_select').click(function(){
+                        alert("a");
                         var TimeSlot = document.getElementById('ModuleSlot1');
                         var FindClash = TimeSlot.childNodes.length;
                         if(FindClash >= 1){
@@ -482,7 +553,7 @@
                     if (!$(target).is('#srch-term') && !$(target).parents().is('#srch-term')) {
                         $('#results').hide();
                     }
-                });
+                });*/
              
             </Script>        
         
