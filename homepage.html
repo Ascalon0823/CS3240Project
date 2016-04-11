@@ -46,24 +46,24 @@
                         <table class = "table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Days</th><th>0800</th><th>0900</th><th>1000</th><th>1100</th><th>1200</th><th>1300</th><th>1400</th><th>1500</th><th>1600</th><th>1700</th><th>1800</th><th>1900</th>
+                                    <th>Days</th><th>0800</th><th>0900</th><th>1000</th><th>1100</th><th>1200</th><th>1300</th><th>1400</th><th>1500</th><th>1600</th><th>1700</th><th>1800</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th>Mon</th><th><div class="ModuleSlot" id="ModuleSlot1"></div></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                                    <th>Mon</th><th class="ModuleSlot" id="ModuleSlot1"></th><th class="ModuleSlot" id="ModuleSlot2"></th><th class="ModuleSlot" id="ModuleSlot3"></th><th class="ModuleSlot" id="ModuleSlot4"></th><th class="ModuleSlot" id="ModuleSlot5"></th><th class="ModuleSlot" id="ModuleSlot6"></th><th class="ModuleSlot" id="ModuleSlot7"></th><th class="ModuleSlot" id="ModuleSlot8"></th><th class="ModuleSlot" id="ModuleSlot9"></th><th class="ModuleSlot" id="ModuleSlot10"></th><th class="ModuleSlot" id="ModuleSlot11"></th>
                                 </tr>
                                 <tr>
-                                    <th>Tue</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                                    <th>Tue</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
                                 </tr>
                                 <tr>
-                                    <th>Wed</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                                    <th>Wed</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
                                 </tr>
                                 <tr>
-                                    <th>Thu</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                                    <th>Thu</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
                                 </tr>
                                 <tr>
-                                    <th>Fri</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                                    <th>Fri</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
                                 </tr>
                             </tbody>
                         </table>
@@ -454,22 +454,24 @@
                         if(InputModule == requireModules[i].id){
                             $('#match').empty().append(InputModule + " " + requireModules[i].name);
                             fillinTable(InputModule);
-                            return false;
                         }
                     }
                 }
              
                 function fillinTable(InputModule){
-                    $('#match').click(function(InputModule){
+                    var Input = InputModule;
+                    $('#match').click(function(){
                         var TimeSlot = document.getElementById('ModuleSlot1');
                         var FindClash = TimeSlot.childNodes.length;
-                        if(FindClash > 1){
-                           alert("clash!");
-                            return false;
+                        if(FindClash >= 1){
+                            alert("clash!");
                         }
                         else{
-                            var Slot = document.createElement('button');
-                            TimeSlot.appendChild(Slot);   
+                            var Slot = document.createElement("p");
+                            TimeSlot.appendChild(Slot);
+                            $('#ModuleSlot1').css("font-size",8+'px');
+                            $('#ModuleSlot1').css("background-color","aliceblue");
+                            $('#ModuleSlot1').append(Input);
                         }
                     });
                 }

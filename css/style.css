@@ -394,13 +394,24 @@ progress {
     color: #a7aabc;
     font-weight: 50;
 /* end of search bar*/
-.ModuleSlot {
-    height:32px;
-    width: 336px;
-    margin-left: 0px;
-    margin-bottom: 2px;
-    text-align: left;
-    color: black;
-    display: block;
-    border: block;
+
+
+
+
+
+
+
+
+.content {
+    font-size: 10px;
+}
+
+
+
+thead {
+    position: absolute;
+}
+
+tbody {
+    position: absolute;
 }
