@@ -204,8 +204,8 @@
                 findMType(userModules);
                 seeModuleList(userModules);
 
-/******************************************************Progress Bar Percentage********************************************/
-/******************************************************Progress Bar Percentage*****************************************/
+             /******************************************************Progress Bar Percentage********************************************/
+             /******************************************************Progress Bar Percentage*****************************************/
                 function findMType(userModules){
                 var ModuleNo = userModules.length;  //number of module depends on users' modules
                 var No_ULR = 0, No_UEM = 0, No_PR = 0, future_ULR = 0, future_UEM = 0, future_PR = 0;
@@ -235,7 +235,7 @@
                     progBarLoad('progBar_UEM',20*No_UEM,'progUpdate_UEM'); 
                 }
              
-/*******************************************used to update the progress bar********************************************/           /*******************************************used to update the progress bar********************************************/           
+                /*******************************************used to update the progress bar********************************************/           /*******************************************used to update the progress bar********************************************/           
                 function progBarLoad(progBar_Name,progBar_update,progUpdate_Name){
 
                     var bar = document.getElementById(progBar_Name),
@@ -283,7 +283,7 @@
                     load();
                 }
              
-/*******************************************Sort module and add to list********************************************/           /*******************************************Sort module and add to list********************************************/
+                /*******************************************Sort module and add to list********************************************/           /*******************************************Sort module and add to list********************************************/
                 function seeModuleList(userModules){
                     
                     var ModuleListAll = document.getElementById('ModuleListAll');
@@ -399,7 +399,7 @@
                     
                 }
              
-/*******************************************Show different List********************************************/           /*******************************************Show different List********************************************/             
+                 /*******************************************Show different List********************************************/           /*******************************************Show different List********************************************/             
                 $("#ULR_eq").click(function(){
                     $("#ModuleListAll").css("display","none");
                     $("#ModuleListU").css("display","none");
@@ -453,7 +453,7 @@
                     for(i = 0; i < requireModules.length;i++){
                         if(InputModule == requireModules[i].id){
                             $('#match').empty().append(InputModule + " " + requireModules[i].name);
-                            findinTable(InputModule);
+                            fillinTable(InputModule);
                             return false;
                         }
                     }
@@ -464,7 +464,7 @@
                         var TimeSlot = document.getElementById('ModuleSlot1');
                         var FindClash = TimeSlot.childNodes.length;
                         if(FindClash > 1){
-                            alert("clash!");
+                           alert("clash!");
                             return false;
                         }
                         else{
