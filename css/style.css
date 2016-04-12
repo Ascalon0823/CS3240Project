@@ -435,3 +435,7 @@ div.results::-webkit-scrollbar{
 .input-group {
     width: 500px;
 }
+
+.table-bordered {
+    table-layout: fixed;
+}

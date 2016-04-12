@@ -45,24 +45,24 @@
                         <table class = "table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Days</th><th>0800</th><th>0900</th><th>1000</th><th>1100</th><th>1200</th><th>1300</th><th>1400</th><th>1500</th><th>1600</th><th>1700</th><th>1800</th>
+                                    <th>Days</th><th>0800</th><th>1000</th><th>1200</th><th>1400</th><th>1600</th><th>1800</th><th>2000</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th>Mon</th><th class="ModuleSlot" id="ModuleSlot1"></th><th class="ModuleSlot" id="ModuleSlot2"></th><th class="ModuleSlot" id="ModuleSlot3"></th><th class="ModuleSlot" id="ModuleSlot4"></th><th class="ModuleSlot" id="ModuleSlot5"></th><th class="ModuleSlot" id="ModuleSlot6"></th><th class="ModuleSlot" id="ModuleSlot7"></th><th class="ModuleSlot" id="ModuleSlot8"></th><th class="ModuleSlot" id="ModuleSlot9"></th><th class="ModuleSlot" id="ModuleSlot10"></th><th class="ModuleSlot" id="ModuleSlot11"></th>
+                                    <th>Mon</th><td id="1-8"></td><td id="1-10"></td><td id="1-12"></td><td id="1-14"></td><td id="1-16"></td><td id="1-18"></td><td id="1-20"></td>
                                 </tr>
                                 <tr>
-                                    <th>Tue</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                                    <th>Tue</th><td id="2-8"></td><td id="2-10"></td><td id="2-12"></td><td id="2-14"></td><td id="2-16"></td><td id="2-18"></td><td id="2-20"></td>
                                 </tr>
                                 <tr>
-                                    <th>Wed</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                                    <th>Wed</th><td id="3-8"></td><td id="3-10"></td><td id="3-12"></td><td id="3-14"></td><td id="3-16"></td><td id="3-18"></td><td id="3-20"></td>
                                 </tr>
                                 <tr>
-                                    <th>Thu</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                                    <th>Thu</th><td id="4-8"></td><td id="4-10"></td><td id="4-12"></td><td id="4-14"></td><td id="4-16"></td><td id="4-18"></td><td id="4-20"></td>
                                 </tr>
                                 <tr>
-                                    <th>Fri</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                                    <th>Fri</th><td id="5-8"></td><td id="5-10"></td><td id="5-12"></td><td id="5-14"></td><td id="5-16"></td><td id="5-18"></td><td id="5-20"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -181,28 +181,28 @@
                        {"id":"CS3242","type":"P","passed":false}
                  ]; 
              var requireModules =[
-                       {"id":"CS1010","type":"P","name":"Programming Methodology","pre":[]},
-                       {"id":"CS1020","type":"P","name":"Data Structures and Algorithms I","pre":["CS1010"]},
-                       {"id":"CS1231","type":"P","name":"Discrete Structures","pre":["CS1010"]},
-                       {"id":"CS2010","type":"P","name":"Data Structures andAlgorithms II","pre":["CS1020"]},
-                       {"id":"CS2100","type":"P","name":"Computer Organisation","pre":["CS1010"]},
-                       {"id":"CS2101","type":"P","name":"Effective Communication for Computing Professionals","pre":[]},
-                       {"id":"CS2102","type":"P","name":"Database system","pre":["CS1231","CS1020"]},
-                       {"id":"CS2103T","type":"P","name":"Software Engineering","pre":["CS1020"]},
-                       {"id":"CS2105","type":"P","name":"Introduction to computer networks","pre":["CS1020"]},
-                       {"id":"CS3240","type":"P","name":"Interaction Design","pre":["CS1020"]},
-                       {"id":"CS3241","type":"P","name":"Computer Graphics","pre":["CS1020","PC1221"]},
-                       {"id":"IS1103","type":"P","name":"Computing and society","pre":[]},
-                       {"id":"MA1101R","type":"P","name":"Linear Algebra I","pre":[]},
-                       {"id":"CS3242","type":"P","name":"3D Modeling and Animation","pre":["CS3241","PC1221","MA1521","MA1101R"]},
-                       {"id":"MA1521","type":"P","name":"Calculus for Computing","pre":[]},
-                       {"id":"MA1301","type":"P","name":"Introductory Mathematics","pre":[]},
-                       {"id":"SS","type":"L","name":"Social Study","pre":[]},
-                       {"id":"ST2334","type":"P","name":"Probability and Statics","pre":["MA1521"]},
-                       {"id":"PC1221","type":"P","name":"Fundamental Physics I","pre":[]},
-                       {"id":"LAJ1201","type":"U","name":"Japanese I","pre":[]},
-                       {"id":"GEK1505","type":"L","name":"Living with Mathematics","pre":[]},
-                       {"id":"SSA2205","type":"L","name":"Singapore and Japan","pre":[]}
+                       {"id":"CS1010","type":"P","name":"Programming Methodology","pre":[],"time":"1-8"},
+                       {"id":"CS1020","type":"P","name":"Data Structures and Algorithms I","pre":["CS1010"],"time":"1-10"},
+                       {"id":"CS1231","type":"P","name":"Discrete Structures","pre":["CS1010"],"time":"2-10"},
+                       {"id":"CS2010","type":"P","name":"Data Structures andAlgorithms II","pre":["CS1020"],"time":"3-10"},
+                       {"id":"CS2100","type":"P","name":"Computer Organisation","pre":["CS1010"],"time":"1-16"},
+                       {"id":"CS2101","type":"P","name":"Effective Communication for Computing Professionals","pre":[],"time":"3-12"},
+                       {"id":"CS2102","type":"P","name":"Database system","pre":["CS1231","CS1020"],"time":"4-10"},
+                       {"id":"CS2103T","type":"P","name":"Software Engineering","pre":["CS1020"],"time":"5-10"},
+                       {"id":"CS2105","type":"P","name":"Introduction to computer networks","pre":["CS1020"],"time":"3-18"},
+                       {"id":"CS3240","type":"P","name":"Interaction Design","pre":["CS1020"],"time":"3-12"},
+                       {"id":"CS3241","type":"P","name":"Computer Graphics","pre":["CS1020","PC1221"],"time":"4-8"},
+                       {"id":"IS1103","type":"P","name":"Computing and society","pre":[],"time":"2-12"},
+                       {"id":"MA1101R","type":"P","name":"Linear Algebra I","pre":[],"time":"5-8"},
+                       {"id":"CS3242","type":"P","name":"3D Modeling and Animation","pre":["CS3241","PC1221","MA1521","MA1101R"],"time":"4-10"},
+                       {"id":"MA1521","type":"P","name":"Calculus for Computing","pre":[],"time":"4-8"},
+                       {"id":"MA1301","type":"P","name":"Introductory Mathematics","pre":[],"time":"4-12"},
+                       {"id":"SS","type":"L","name":"Social Study","pre":[],"time":"5-16"},
+                       {"id":"ST2334","type":"P","name":"Probability and Statics","pre":["MA1521"],"time":"3-16"},
+                       {"id":"PC1221","type":"P","name":"Fundamental Physics I","pre":[],"time":"1-16"},
+                       {"id":"LAJ1201","type":"U","name":"Japanese I","pre":[],"time":"2-18"},
+                       {"id":"GEK1505","type":"L","name":"Living with Mathematics","pre":[],"time":"4-12"},
+                       {"id":"SSA2205","type":"L","name":"Singapore and Japan","pre":[],"time":"5-12"}
                  ];  
              var tableModules =[
                  ]; 
@@ -457,19 +457,21 @@
                  $('.results').on('click','button',function(e){
                     var id = $(this).first().children().first().text();
                     console.log(id);
-                    var TimeSlot = document.getElementById('ModuleSlot1');
+                    var mod = findModule(id);
+                    var time = mod.time;
+                    var TimeSlot = document.getElementById(time);
                     var FindClash = TimeSlot.childNodes.length;
                     if(FindClash >= 1){
                         alert("clash!");
                     }
                     else{
-                        var Slot = document.createElement("p");
-                        TimeSlot.appendChild(Slot);
-                        $('#ModuleSlot1').css("font-size",8+'px');
-                        $('#ModuleSlot1').css("background-color","aliceblue");
-
-                        $('#ModuleSlot1').append(id);
+                        var code = document.createTextNode(id);
+                        var slot = document.createElement('div');
+                        TimeSlot.style.backgroundColor="#09FFFF";
+                        slot.appendChild(code);
+                        TimeSlot.appendChild(slot);
                     }
+                    
                     return false;
                 });
             
