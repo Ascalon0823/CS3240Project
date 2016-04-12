@@ -170,11 +170,11 @@
          <Script>
                    
              var userModules =[
-                       {"id":"CS1010","type":"P","passed":true,"pre":[]},
-                       {"id":"CS1020","type":"P","passed":true,"pre":["CS1010"]},
+                       {"id":"CS1010","type":"P","passed":true},
+                       {"id":"CS1020","type":"P","passed":true},
                        {"id":"CS1231","type":"P","passed":true},
                        {"id":"LAJ1201","type":"U","passed":true},
-                       {"id":"CS2103","type":"P","passed":false},
+                       {"id":"CS2103T","type":"P","passed":false},
                        {"id":"MA1101R","type":"P","passed":true},
                        {"id":"GEK1505","type":"L","passed":true},
                        {"id":"SSA2205","type":"L","passed":true},
@@ -199,7 +199,10 @@
                        {"id":"MA1301","type":"P","name":"Introductory Mathematics","pre":[]},
                        {"id":"SS","type":"L","name":"Social Study","pre":[]},
                        {"id":"ST2334","type":"P","name":"Probability and Statics","pre":["MA1521"]},
-                       {"id":"PC1221","type":"P","name":"Fundamental Physics I","pre":[]}
+                       {"id":"PC1221","type":"P","name":"Fundamental Physics I","pre":[]},
+                       {"id":"LAJ1201","type":"U","name":"Japanese I","pre":[]},
+                       {"id":"GEK1505","type":"L","name":"Living with Mathematics","pre":[]},
+                       {"id":"SSA2205","type":"L","name":"Singapore and Japan","pre":[]}
                  ];  
              var tableModules =[
                  ]; 
@@ -316,89 +319,52 @@
                     
                     //create a specific list for modules
                     for(i = 0; i < userModules.length; i++ ){
-                        var button = document.createElement('button');
-                        var id = document.createTextNode(userModules[i].id);
-                        var state = "PASS";
-                        if(!userModules[i].passed){
-                            state="AVAILABLE"
-                        }
-                        var stateE = document.createTextNode(state);
-                        var stateDiv = document.createElement('div');
-                        stateDiv.style.cssFloat="right";
-                        button.appendChild(id);
-                        stateDiv.appendChild(stateE);
-                        button.appendChild(stateDiv);
-                        var self=document.getElementById('info');
+                        var id = userModules[i].id;
+                        var mod = findModule(id);
+                        var button = createModButtone(mod)
                         if(userModules[i].type=="P"){
-                            if(state == "PASS"){
-                                button.style.backgroundColor= "#01DF01";
-                            }
-                            else{
-                                button.style.backgroundColor= "#B4FFA3";
-                            }
                             ModuleListP.appendChild(button);
                         }
                         else if(userModules[i].type=="U"){
-                            if(state == "PASS"){
-                                button.style.backgroundColor= "#2E9AFE";
-                            }
-                            else{
-                                button.style.backgroundColor= "#81F7F3";
-                            }
                             ModuleListU.appendChild(button);
                         }
                         else if(userModules[i].type=="L"){
-                            if(state == "PASS"){
-                                button.style.backgroundColor= "#FFBF00";
-                            }
-                            else{
-                                button.style.backgroundColor= "#F3F781";
-                            }
                             ModuleListL.appendChild(button);
                         }
                     }
                     
                     //create total module list
                     for(i = 0; i < userModules.length; i++ ){
-                        var button = document.createElement('button');
-                        var id = document.createTextNode(userModules[i].id);
-                        var state = "PASS";
-                        if(!userModules[i].passed){
-                            state="AVAILABLE"
-                        }
-                        var stateE = document.createTextNode(state);
-                        var stateDiv = document.createElement('div');
-                        stateDiv.style.cssFloat="right";
-                        button.appendChild(id);
-                        stateDiv.appendChild(stateE);
-                        button.appendChild(stateDiv);
-                        var self=document.getElementById('info');
-                        if(userModules[i].type=="P"){
-                            if(state == "PASS"){
-                                button.style.backgroundColor= "#01DF01";
-                            }
-                            else{
-                                button.style.backgroundColor= "#B4FFA3";
-                            }
-                        }
-                        else if(userModules[i].type=="U"){
-                            if(state == "PASS"){
-                                button.style.backgroundColor= "#2E9AFE";
-                            }
-                            else{
-                                button.style.backgroundColor= "#81F7F3";
-                            }
-                        }
-                        else if(userModules[i].type=="L"){
-                            if(state == "PASS"){
-                                button.style.backgroundColor= "#FFBF00";
-                            }
-                            else{
-                                button.style.backgroundColor= "#F3F781";
-                            }
-                        }
+                        var id = userModules[i].id;
+                        var mod = findModule(id);
+                        var button = createModButtone(mod);
                         ModuleListAll.appendChild(button);
                     }
+                    $('.infowindow').on('mouseenter','button',function(e){
+                        var id = $(this).first().children().first().text();
+                        console.log(id);
+                        var mod = findModule(id);
+
+                        var missing = findMissingModule(mod);
+                        if(missing.length>0){
+                            var missingMods = document.getElementById('missingModWindow');
+                            missingMods.innerHTML="";
+                            var x = e.clientX;
+                            var y = e.clientY;
+                            missingMods.style.left=x-480;
+                            missingMods.style.top=y;
+                            missingMods.style.display="block";
+                            for(s=0;s<missing.length;s++){
+                                var m = findModule(missing[s]);
+                                var b = createModButtone(m);
+                                missingMods.appendChild(b);
+                            }
+                        }
+                    });
+                    $('.infowindow').on('mouseleave','button',function(e){
+                        var e = document.getElementById('missingModWindow');
+                            e.style.display="none";
+                    });
                     
                 }
              
@@ -505,10 +471,14 @@
                 function createModButtone(mod){
                     var button = document.createElement('button');
                     button.setAttribute('id','module_select');
+                    var idd = document.createElement('div');
                     var id = document.createTextNode(mod.id);
-                    var name = document.createTextNode(" "+mod.name);
+                    idd.appendChild(id);
+                    idd.style.float='left';
+                    idd.style.marginRight="3px";
+                    var name = document.createTextNode(""+mod.name);
 
-                    button.appendChild(id);
+                    button.appendChild(idd);
                     button.appendChild(name);
                     var state = "AVAILABLE";
                     var userModule;

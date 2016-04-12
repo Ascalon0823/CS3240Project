@@ -203,7 +203,6 @@ progress {
     display: block;
     border: none;
     
-    
 }
 
 /* PR Progress bar hovering*/
@@ -382,8 +381,9 @@ div.results::-webkit-scrollbar{
 }
 
 #missingModWindow button{
+    
     height:32px;
-    width: 480px;
+    width: 336px;
     margin-top:2px;
     margin-left: 10px;
     margin-right: 10px;
@@ -392,7 +392,7 @@ div.results::-webkit-scrollbar{
     color: black;
     display: block;
     border: none;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 
