@@ -160,7 +160,7 @@
                 </div>
             </div>
 <!----------------------------------------------------Graduation Check Panels Ends------------------------------------>                 
-        
+        <div id = "missingModWindow"></div>
         </div>
         
 <!----------------------------------------------------Scripts------------------------------------>                 
@@ -181,24 +181,25 @@
                        {"id":"CS3242","type":"P","passed":false}
                  ]; 
              var requireModules =[
-                       {"id":"CS1010","type":"P","name":"Programming Methodology"},
-                       {"id":"CS1020","type":"P","name":"Data Structures and Algorithms I"},
-                       {"id":"CS1231","type":"P","name":"Discrete Structures"},
-                       {"id":"CS2010","type":"P","name":"Data Structures andAlgorithms II"},
-                       {"id":"CS2100","type":"P","name":"Computer Organisation"},
-                       {"id":"CS2101","type":"P","name":"Effective Communication for Computing Professionals"},
-                       {"id":"CS2102","type":"P","name":"???"},
-                       {"id":"CS2103T","type":"P","name":"Software Engineering"},
-                       {"id":"CS2105","type":"P","name":"Software Engineering"},
-                       {"id":"CS3240","type":"P","name":"Software Engineering"},
-                       {"id":"CS3241","type":"P","name":"Software Engineering"},
-                       {"id":"IS1103","type":"P","name":"Software Engineering"},
-                       {"id":"MA1101R","type":"P","name":"Software Engineering"},
-                       {"id":"CS3242","type":"P","name":"Software Engineering"},
-                       {"id":"MA1521","type":"P","name":"Software Engineering"},
-                       {"id":"MA1301","type":"P","name":"Software Engineering"},
-                       {"id":"SS","type":"L","name":"Software Engineering"},
-                       {"id":"ST2334","type":"P","name":"Software Engineering"}
+                       {"id":"CS1010","type":"P","name":"Programming Methodology","pre":[]},
+                       {"id":"CS1020","type":"P","name":"Data Structures and Algorithms I","pre":["CS1010"]},
+                       {"id":"CS1231","type":"P","name":"Discrete Structures","pre":["CS1010"]},
+                       {"id":"CS2010","type":"P","name":"Data Structures andAlgorithms II","pre":["CS1020"]},
+                       {"id":"CS2100","type":"P","name":"Computer Organisation","pre":["CS1010"]},
+                       {"id":"CS2101","type":"P","name":"Effective Communication for Computing Professionals","pre":[]},
+                       {"id":"CS2102","type":"P","name":"Database system","pre":["CS1231","CS1020"]},
+                       {"id":"CS2103T","type":"P","name":"Software Engineering","pre":["CS1020"]},
+                       {"id":"CS2105","type":"P","name":"Introduction to computer networks","pre":["CS1020"]},
+                       {"id":"CS3240","type":"P","name":"Interaction Design","pre":["CS1020"]},
+                       {"id":"CS3241","type":"P","name":"Computer Graphics","pre":["CS1020","PC1221"]},
+                       {"id":"IS1103","type":"P","name":"Computing and society","pre":[]},
+                       {"id":"MA1101R","type":"P","name":"Linear Algebra I","pre":[]},
+                       {"id":"CS3242","type":"P","name":"3D Modeling and Animation","pre":["CS3241","PC1221","MA1521","MA1101R"]},
+                       {"id":"MA1521","type":"P","name":"Calculus for Computing","pre":[]},
+                       {"id":"MA1301","type":"P","name":"Introductory Mathematics","pre":[]},
+                       {"id":"SS","type":"L","name":"Social Study","pre":[]},
+                       {"id":"ST2334","type":"P","name":"Probability and Statics","pre":["MA1521"]},
+                       {"id":"PC1221","type":"P","name":"Fundamental Physics I","pre":[]}
                  ];  
              var tableModules =[
                  ]; 
@@ -452,46 +453,7 @@
                         }
                         else{
                             for(var i = 0;i<results.length;i++){
-                                var button = document.createElement('button');
-                                button.setAttribute('id','module_select');
-                                var id = document.createTextNode(results[i].id);
-                                button.appendChild(id);
-                                var state = "AVAILABLE";
-                                var userModule;
-                                for(k=0;k<userModules.length;k++){
-                                    if(userModules[k].id==results[i].id&&userModules[k].passed){
-                                        state="PASS";
-                                    }
-                                }
-                                var stateE = document.createTextNode(state);
-                                var stateDiv = document.createElement('div');
-                                stateDiv.style.cssFloat="right";
-                                stateDiv.appendChild(stateE);
-                                button.appendChild(stateDiv);
-                                if(results[i].type=="P"){
-                                    if(state == "PASS"){
-                                        button.style.backgroundColor= "#01DF01";
-                                    }
-                                    else{
-                                        button.style.backgroundColor= "#B4FFA3";
-                                    }
-                                }
-                                else if(results[i].type=="U"){
-                                    if(state == "PASS"){
-                                        button.style.backgroundColor= "#2E9AFE";
-                                    }
-                                    else{
-                                        button.style.backgroundColor= "#81F7F3";
-                                    }
-                                }
-                                else if(results[i].type=="L"){
-                                    if(state == "PASS"){
-                                        button.style.backgroundColor= "#FFBF00";
-                                    }
-                                    else{
-                                        button.style.backgroundColor= "#F3F781";
-                                    }
-                                }
+                                var button = createModButtone(results[i]);
                                 self.appendChild(button);
                             }
                             $('.results').on('click','button',function(e){
@@ -511,10 +473,90 @@
                                 }
                                 return false;
                             });
+                            
+                            $('.results').on('mouseenter','button',function(e){
+                                var index = $(this).closest("button").index();
+                                var mod = results[index];
+                                
+                                var missing = findMissingModule(mod);
+                                if(missing.length>0){
+                                    var missingMods = document.getElementById('missingModWindow');
+                                    missingMods.innerHTML="";
+                                    var x = e.clientX;
+                                    var y = e.clientY;
+                                    missingMods.style.left=x-480;
+                                    missingMods.style.top=y;
+                                    missingMods.style.display="block";
+                                    for(s=0;s<missing.length;s++){
+                                        var m = findModule(missing[s]);
+                                        var b = createModButtone(m);
+                                        missingMods.appendChild(b);
+                                    }
+                                }
+                            });
+                            $('.results').on('mouseleave','button',function(e){
+                                var e = document.getElementById('missingModWindow');
+                                    e.style.display="none";
+                            });
                         }
                     }
                 });
-             
+            
+                function createModButtone(mod){
+                    var button = document.createElement('button');
+                    button.setAttribute('id','module_select');
+                    var id = document.createTextNode(mod.id);
+                    var name = document.createTextNode(" "+mod.name);
+
+                    button.appendChild(id);
+                    button.appendChild(name);
+                    var state = "AVAILABLE";
+                    var userModule;
+                    for(k=0;k<userModules.length;k++){
+                        if(userModules[k].id==mod.id&&userModules[k].passed){
+                            state="PASS";
+                        }
+                    }
+                    var mod = findModule(mod.id);
+                    var missing = findMissingModule(mod);
+                    if(missing.length>0){
+                        state = "LOCK";
+                        
+                    }
+                    var stateE = document.createTextNode(state);
+                    var stateDiv = document.createElement('div');
+                    stateDiv.style.cssFloat="right";
+                    stateDiv.appendChild(stateE);
+                    button.appendChild(stateDiv);
+                    if(mod.type=="P"){
+                        if(state == "PASS"){
+                            button.style.backgroundColor= "#01DF01";
+                        }
+                        else{
+                            button.style.backgroundColor= "#B4FFA3";
+                        }
+                    }
+                    else if(mod.type=="U"){
+                        if(state == "PASS"){
+                            button.style.backgroundColor= "#2E9AFE";
+                        }
+                        else{
+                            button.style.backgroundColor= "#81F7F3";
+                        }
+                    }
+                    else if(mod.type=="L"){
+                        if(state == "PASS"){
+                            button.style.backgroundColor= "#FFBF00";
+                        }
+                        else{
+                            button.style.backgroundColor= "#F3F781";
+                        }
+                    }
+                    if(state=="LOCK"){
+                        button.style.backgroundColor= "#FF9999";
+                    }
+                    return button;
+                }
                 function matchModule(InputModule){
                     var searchResult = [];
                     var input = InputModule.toLowerCase();
@@ -526,7 +568,30 @@
                     }
                     return searchResult;
                 }
-                
+                function findModule(id){
+                    for(j=0;j<requireModules.length;j++){
+                        if(requireModules[j].id==id){
+                            return requireModules[j];
+                        }
+                    }
+                    return null;
+                }
+                function findMissingModule(mod){
+                    var missing=[];
+                    var req = mod.pre;
+                    for(j=0;j<req.length;j++){
+                        var taken = false;
+                        for(w=0;w<userModules.length;w++){
+                            if(userModules[w].id==req[j]&&userModules[w].passed){
+                                taken = true;
+                            }
+                        }
+                        if(!taken){
+                              missing.push(req[j]);
+                        }
+                    }
+                    return missing;
+                }
              
                 /*function fillinTable(InputModule){
                     var Input = InputModule;

@@ -370,16 +370,29 @@ div.results::-webkit-scrollbar{
 
 .results button{
     height:32px;
-    width: 380px;
+    width: 480px;
     margin-left: 10px;
     margin-bottom: 2px;
     text-align: left;
     color: black;
     display: block;
     border: none;
-    font-size: 18px;
+    font-size: 14px;
     
-    
+}
+
+#missingModWindow button{
+    height:32px;
+    width: 480px;
+    margin-top:2px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 2px;
+    text-align: left;
+    color: black;
+    display: block;
+    border: none;
+    font-size: 14px;
 }
 
 
@@ -391,6 +404,7 @@ div.results::-webkit-scrollbar{
 ::-webkit-input-placeholder {
     color: #a7aabc;
     font-weight: 50;
+}
 /* end of search bar*/
 
 
@@ -406,10 +420,18 @@ div.results::-webkit-scrollbar{
 
 
 
-thead {
+
+
+
+#missingModWindow {
     position: absolute;
+    background-color: white;
+    border-radius: 3px;
+    border:1px solid #FF7F50;
+    z-index: 100;
+    display: none;
 }
 
-tbody {
-    position: absolute;
+.input-group {
+    width: 500px;
 }
