@@ -351,7 +351,7 @@
                             missingMods.innerHTML="";
                             var x = e.clientX;
                             var y = e.clientY;
-                            missingMods.style.left=x-480;
+                            missingMods.style.left=x;
                             missingMods.style.top=y;
                             missingMods.style.display="block";
                             for(s=0;s<missing.length;s++){
@@ -410,6 +410,9 @@
                         $('#results').css("display","block");
                     var self = document.getElementById('results');
                             self.innerHTML="";
+                    if(x.length ==0){
+                        $('#results').css("display","none");
+                    }
                     if(x.length >= 1){
                         InputModule = x;
                         var results = matchModule(InputModule);
@@ -422,23 +425,7 @@
                                 var button = createModButtone(results[i]);
                                 self.appendChild(button);
                             }
-                            $('.results').on('click','button',function(e){
-                                var index = $(this).closest("button").index();
-                                var TimeSlot = document.getElementById('ModuleSlot1');
-                                var FindClash = TimeSlot.childNodes.length;
-                                if(FindClash >= 1){
-                                    alert("clash!");
-                                }
-                                else{
-                                    var Slot = document.createElement("p");
-                                    TimeSlot.appendChild(Slot);
-                                    $('#ModuleSlot1').css("font-size",8+'px');
-                                    $('#ModuleSlot1').css("background-color","aliceblue");
-                                    
-                                    $('#ModuleSlot1').append(results[index].id);
-                                }
-                                return false;
-                            });
+                            
                             
                             $('.results').on('mouseenter','button',function(e){
                                 var index = $(this).closest("button").index();
@@ -450,7 +437,7 @@
                                     missingMods.innerHTML="";
                                     var x = e.clientX;
                                     var y = e.clientY;
-                                    missingMods.style.left=x-480;
+                                    missingMods.style.left=x-200;
                                     missingMods.style.top=y;
                                     missingMods.style.display="block";
                                     for(s=0;s<missing.length;s++){
@@ -466,6 +453,24 @@
                             });
                         }
                     }
+                });
+                 $('.results').on('click','button',function(e){
+                    var id = $(this).first().children().first().text();
+                    console.log(id);
+                    var TimeSlot = document.getElementById('ModuleSlot1');
+                    var FindClash = TimeSlot.childNodes.length;
+                    if(FindClash >= 1){
+                        alert("clash!");
+                    }
+                    else{
+                        var Slot = document.createElement("p");
+                        TimeSlot.appendChild(Slot);
+                        $('#ModuleSlot1').css("font-size",8+'px');
+                        $('#ModuleSlot1').css("background-color","aliceblue");
+
+                        $('#ModuleSlot1').append(id);
+                    }
+                    return false;
                 });
             
                 function createModButtone(mod){
