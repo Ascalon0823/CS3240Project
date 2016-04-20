@@ -33,7 +33,7 @@
                     </div>
                 </div>
                     
-                <div class = "profile"><button class = "user">U</button></div>
+                <div class = "profile"><button class = "user" id="user">U</button></div>
             </div>
   
             <!--timetable + graduation panel-->
@@ -106,7 +106,7 @@
 <!----------------------------------------------------Graduation Check Panels------------------------------------>                 
 <!----------------------------------------------------Graduation Check Panels------------------------------------>  
 <!----------------------------------------------------Graduation Check Panels------------------------------------>  
-                <div class="col-sm-4">
+                <div class="col-sm-4" id="GrduationCheckPanel">
                         <div class="checkbars">
                         
                         <h2>Graduation Progress</h2>
@@ -193,7 +193,59 @@
                     </div>
                 </div>
             </div>
-<!----------------------------------------------------Graduation Check Panels Ends------------------------------------>                 
+<!----------------------------------------------------Graduation Check Panels Ends------------------------------------>   
+                <!------------------------------------USER PROFILE-------------------------------------->    
+<!------------------------------------USER PROFILE-------------------------------------->  
+<!------------------------------------USER PROFILE-------------------------------------->  
+        <div class="col-sm-4" id="UserProfileBox">
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Lucy Yang</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive"> </div>
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody class="tableofuserinfo">
+                      <tr>
+                        <td>Department:</td>
+                        <td>School of Computing</td>
+                      </tr>
+                      <tr>
+                        <td>Year</td>
+                        <td>2</td>
+                      </tr>
+                           
+                        <tr>
+                        <td>Spcific Track</td>
+                        <td>N/A</td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td><a href="">axxxxxxxa@nus.edu.sg</a></td>
+                      </tr>
+                        <td>Phone Number</td>
+                        <td>86xxxxx</td>
+                           
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                  
+                </div>
+              </div>
+            </div>  
+          </div>
+        </div>
+            
+ <!------------------------------------USER PROFILE-------------------------------------->    
+<!------------------------------------USER PROFILE-------------------------------------->  
+<!------------------------------------USER PROFILE-------------------------------------->   
+                
+                
+                
         <div id = "missingModWindow"></div>
                 
         </div>
@@ -212,6 +264,10 @@
             </div>
         </div>
         <div class="footer"><p class="footerfontC">Copyright © 2016 NUS Acadamic Plan. All rights reserved.</p></div>
+        
+          
+            
+      </div>        
         
 <!----------------------------------------------------Scripts------------------------------------>                 
 <!----------------------------------------------------Scripts------------------------------------>  
@@ -758,7 +814,17 @@
                         $('#results').hide();
                     }
                 });
+/***************************************************** User profile ************************************************/
+/***************************************************** User profile ************************************************/
+
+              $("#user").click(function(){
+                  $("#UserProfileBox").toggle();
+                  $("#GrduationCheckPanel").toggle();
+                  return false;
+              });
              
+/***************************************************** User profile ************************************************/
+/***************************************************** User profile ************************************************/
             </Script>        
         
     </body>

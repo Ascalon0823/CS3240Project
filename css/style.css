@@ -646,3 +646,36 @@ div.results::-webkit-scrollbar{
     padding-right: 300px;
     padding-bottom: 50px;
 }
+
+.UserProfileBox {
+    display: none;
+}
+
+#UserProfileBox {
+    display: none;
+    padding-top: 20px;
+}
+
+.panel {
+    height: 500px;
+}
+
+.table {
+    width: 100px;
+}
+
+.tableofuserinfo {
+    width: 100px;
+}
+
+.table {
+    font-size: 10px;
+}
+
+
+
+
+
+.commentWindow {
+    display: inherit;
+}
